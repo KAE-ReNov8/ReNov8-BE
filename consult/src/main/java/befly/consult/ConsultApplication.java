@@ -1,11 +1,11 @@
-package belfy.community;
+package befly.consult;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CommunityApplication {
+public class ConsultApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CommunityApplication.class, args);
+        SpringApplication.run(ConsultApplication.class, args);
     }
 }
