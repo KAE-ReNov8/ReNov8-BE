@@ -1,0 +1,6 @@
+rootProject.name = 'Befly'
+include 'user'
+include 'community'
+include 'consult'
+include 'common'
+
