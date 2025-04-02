@@ -47,6 +47,22 @@ subprojects {
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
         implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+        //JUnit
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+        //    Slf4j for JUnit Test
+        testCompileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+
+        // Mysql 연결
+        runtimeOnly 'com.mysql:mysql-connector-j'
+
+
+
     }
 }
 
