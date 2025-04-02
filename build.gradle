@@ -53,6 +53,10 @@ subprojects {
         //JUnit
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+//      mongodb
+        implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+
 
         //    Slf4j for JUnit Test
         testCompileOnly 'org.projectlombok:lombok'
