@@ -2,7 +2,7 @@
 
 # ReNov8-BE
 
-### KAE 6th - ReNov8 백엔드 레포지토리
+### KEA 6th - ReNov8 백엔드 레포지토리
 #### [노션 링크](https://www.notion.so/Team-Space-1b3ea3db585680a5aa1fd8f6b5aaa9fb)
 
 ## BE Members
