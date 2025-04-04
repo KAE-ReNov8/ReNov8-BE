@@ -1,6 +1,6 @@
 package befly.community.domain.comment;
 
-import befly.common.BaseTime;
+import befly.common.common.BaseTimeEntity;
 import befly.community.domain.FreePost;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class FreeComment extends BaseTime {
+public class FreeComment extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

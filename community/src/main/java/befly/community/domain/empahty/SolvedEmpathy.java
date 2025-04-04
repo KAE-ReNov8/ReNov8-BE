@@ -1,6 +1,6 @@
 package befly.community.domain.empahty;
 
-import befly.common.BaseTime;
+import befly.common.common.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "solved_empathy")
-public class SolvedEmpathy extends BaseTime {
+public class SolvedEmpathy extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

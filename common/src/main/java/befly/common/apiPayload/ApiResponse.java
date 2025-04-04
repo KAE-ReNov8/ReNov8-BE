@@ -1,4 +1,4 @@
-package befly.common;
+package befly.common.apiPayload;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
