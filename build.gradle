@@ -56,7 +56,8 @@ subprojects {
 //      mongodb
         implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 
-
+//      kafka 추가
+        implementation 'org.springframework.kafka:spring-kafka'
 
         //    Slf4j for JUnit Test
         testCompileOnly 'org.projectlombok:lombok'
