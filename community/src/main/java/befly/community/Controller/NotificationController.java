@@ -14,11 +14,9 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 public class NotificationController {
 
     private final KafkaNotificationService notificationService;
-    private final KafkaFreeCommentProducerService freeCommentService;
 
     public NotificationController(KafkaNotificationService notificationService, KafkaFreeCommentProducerService freeCommentService) {
         this.notificationService = notificationService;
-        this.freeCommentService = freeCommentService;
     }
 
 
