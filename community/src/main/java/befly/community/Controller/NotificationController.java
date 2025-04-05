@@ -21,6 +21,11 @@ public class NotificationController {
         this.freeCommentService = freeCommentService;
     }
 
+
+    /**
+     * 클라이언트로부터 수신한 SSE 요청을 처리합니다.
+     * Service를 통해 SSE Emitter를 관리합니다.
+     */
     @GetMapping("/noti")
     public SseEmitter streamNotifications() {
         return notificationService.addEmitter(); // Service를 통해 SSE 클라이언트 관리
@@ -28,8 +33,9 @@ public class NotificationController {
 
 
     /**
-     * 카프카 메세지 소비
-     * @param record
+     * Kafka로부터 수신한 메시지를 소비하여 클라이언트에게 전달합니다.
+     *
+     * @param record Kafka에서 받은 메시지를 담고 있는 ConsumerRecord 객체
      */
     @KafkaListener(topics = "free-comment-notifications", groupId = "free-notification-group")
     public void consumeKafkaMessage(ConsumerRecord<String, String> record) {

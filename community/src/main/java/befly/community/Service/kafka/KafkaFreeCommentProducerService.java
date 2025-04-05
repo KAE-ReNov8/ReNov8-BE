@@ -24,22 +24,20 @@ public class KafkaFreeCommentProducerService {
      * @param comment 작성한 댓글 내용
      * @param userId 작성한 유저의 userID
      */
-    public void addComment(String comment, Long userId) {
-        /**
-         * FIXME 중요!!!
-         * MSA 방식으로 수정 필요.
-         * 해당 코드가 살아있을 시, DB 설계 상 돌아가지 않으니, 임시로 주석 처리
-         */
-//        FreeComment freeComment = FreeComment.builder()
-//                .freeComment(comment)
-//                .userId(userId)
-//                .build();
-//        freeCommentRepository.save(freeComment);
+    public void addComment(String comment, Long userId){
+/*
+        FIXME 중요!!!
+        MSA 방식으로 수정 필요.
+        해당 코드가 살아있을 시, DB 설계 상 돌아가지 않으니, 임시로 주석 처리
 
-        /**
-         * FIXME
-         * 추후 userID가 아닌 닉네임으로 수정 필요.
-         */
+        FreeComment freeComment = FreeComment.builder()
+                .freeComment(comment)
+                .userId(userId)
+                .build();
+        freeCommentRepository.save(freeComment);
+*/
+
+//       FIXME  추후 userID가 아닌 닉네임으로 수정 필요.
         String message = userId + "님이 자유함(Worry)에 댓글을 달았습니다.";
         kafkaTemplate.send(TOPIC, message);
     }
