@@ -32,4 +32,10 @@ public class User extends BaseTimeEntity {
 
     @Column
     private Long badge; // badge
+
+    @Column
+    private String password;
+
+    @Column
+    private String nickname;
 }
