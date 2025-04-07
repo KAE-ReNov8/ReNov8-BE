@@ -1,0 +1,26 @@
+{
+  "name": "befly",
+  "version": "1.0.0",
+  "description": "<div align=center>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KAE-ReNov8/ReNov8-BE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KAE-ReNov8/ReNov8-BE/issues"
+  },
+  "homepage": "https://github.com/KAE-ReNov8/ReNov8-BE#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "husky": "^9.1.7"
+  }
+}

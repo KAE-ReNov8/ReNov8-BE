@@ -20,6 +20,14 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+logs/
+
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
