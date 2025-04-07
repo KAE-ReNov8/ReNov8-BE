@@ -32,7 +32,6 @@ public class LoggingFilter extends OncePerRequestFilter {
                 .getRequest();
         // response 상태 추적용 래퍼
         ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper(response);
-
         try {
             filterChain.doFilter(requestWrapper, responseWrapper);
         } finally {
@@ -46,6 +45,7 @@ public class LoggingFilter extends OncePerRequestFilter {
             } catch (IOException e) {
                 logger.warn("Failed to log request info", e);
             }
+            responseWrapper.copyBodyToResponse();
         }
     }
 }

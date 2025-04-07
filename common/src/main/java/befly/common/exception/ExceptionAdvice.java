@@ -2,7 +2,6 @@ package befly.common.exception;
 
 import befly.common.apiPayload.ApiResponse;
 import befly.common.code.BaseCodeDto;
-import befly.common.code.status.GlobalErrorStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
