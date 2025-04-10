@@ -22,7 +22,7 @@ public class User extends BaseTimeEntity {
     private String userName; // user_name (NOT NULL)
 
     @Column(nullable = false, unique = true, length = 255)
-    private String email; // email (NOT NULL, UNIQUE)
+    private String email; // email (NOT NULL, UNIQUE) -> 로그인용 아이디 및 카카오 아이디
 
     @Column(length = 255)
     private String profileImg; // profile_img

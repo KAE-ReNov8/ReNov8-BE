@@ -1,12 +1,10 @@
 package befly.user.controller;
 
+import befly.user.dto.LoginResponse;
+import befly.user.dto.SocialIdRequest;
+import befly.user.service.GateWayService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import befly.common.apiPayload.ApiResponse;
 import befly.common.code.status.SuccessStatus;
@@ -28,6 +26,8 @@ public class BeflyLoginController {
     private final SignUpService signUpService;
     private final SignInService signInService;
     private final EmailDuplication emailDuplication;
+    private final GateWayService gateWayService;
+
 
     /**
      * 회원가입 로직
@@ -68,5 +68,19 @@ public class BeflyLoginController {
             log.info("Email duplication check success: {}, No email Duplication", Email);
         }
         return SuccessStatus._OK.getMessage();
+    }
+
+
+
+    @PostMapping("/oauth2")
+    public LoginResponse oauth2(@RequestBody SocialIdRequest socialIdRequest) {
+        log.info("SocialId Request : {}", socialIdRequest.getOuath2Id());
+        return gateWayService.findUserBySocialId(socialIdRequest.getOuath2Id());
+    }
+
+    @GetMapping("/refresh")
+    public LoginResponse refreshToken(@RequestHeader("userId") long userId) {
+        log.info("Refresh Token Request : {}", userId);
+        return gateWayService.generateLoginResponse(userId);
     }
 }
