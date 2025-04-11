@@ -4,16 +4,13 @@ import befly.common.annotations.LoginUser;
 import befly.user.dto.LoginResponse;
 import befly.user.dto.SocialIdRequest;
 import befly.user.service.GateWayService;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import befly.common.apiPayload.ApiResponse;
 import befly.common.code.status.SuccessStatus;
 import befly.user.domain.User;
-import befly.user.dto.SignInRequest;
-import befly.user.dto.SignUpRequest;
+import befly.user.dto.*;
 import befly.user.service.EmailDuplication;
 import befly.user.service.SignInService;
 import befly.user.service.SignUpService;
@@ -49,13 +46,12 @@ public class AuthController {
     }
 
 
-//    TODO 추후 jwt 토큰 리턴 형태로?? 로직 변경 필요
     @PostMapping("/signin")
-    public String signIn(@RequestBody SignInRequest signInRequest) {
+    public ApiResponse<TokenResponse> signIn(@RequestBody SignInRequest signInRequest) {
         log.info("signIn Request : {}", signInRequest);
-        String token = signInService.signIn(signInRequest);
+        ApiResponse<TokenResponse> apiResponse = signInService.signIn(signInRequest);
         log.info("signIn Success");
-        return token;
+        return apiResponse;
     }
 
     @GetMapping("/test")
