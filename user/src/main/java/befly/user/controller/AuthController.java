@@ -1,23 +1,27 @@
 package befly.user.controller;
 
+import befly.common.annotations.LoginUser;
+import befly.user.dto.LoginResponse;
+import befly.user.dto.SocialIdRequest;
+import befly.user.service.GateWayService;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import befly.common.apiPayload.ApiResponse;
 import befly.common.code.status.SuccessStatus;
 import befly.user.domain.User;
 import befly.user.dto.*;
 import befly.user.service.EmailDuplication;
-import befly.user.service.GateWayService;
 import befly.user.service.SignInService;
 import befly.user.service.SignUpService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
 @RequestMapping("/auth")
 @RequiredArgsConstructor
-public class BeflyLoginController {
+public class AuthController {
 
     private final SignUpService signUpService;
     private final SignInService signInService;
@@ -50,6 +54,11 @@ public class BeflyLoginController {
         return apiResponse;
     }
 
+    @GetMapping("/test")
+    public String test(@LoginUser Long userId) {
+        return userId.toString();
+    }
+
 
     /**
      * 이메일 중복 체크
@@ -69,13 +78,23 @@ public class BeflyLoginController {
 
     @PostMapping("/oauth2")
     public LoginResponse oauth2(@RequestBody SocialIdRequest socialIdRequest) {
-        log.info("SocialId Request : {}", socialIdRequest.getOuath2Id());
-        return gateWayService.findUserBySocialId(socialIdRequest.getOuath2Id());
+        log.info("SocialId Request : {}", socialIdRequest.getOauth2Id());
+        return gateWayService.findUserBySocialId(socialIdRequest.getOauth2Id());
     }
 
     @GetMapping("/refresh")
-    public LoginResponse refreshToken(@RequestHeader("userId") long userId) {
+    public LoginResponse refreshToken(@LoginUser Long userId, HttpServletResponse response) {
         log.info("Refresh Token Request : {}", userId);
-        return gateWayService.generateLoginResponse(userId);
+        LoginResponse loginResponse = gateWayService.generateLoginResponse(userId);
+        //https 배포시 Secure 추가
+        response.addHeader("Set-Cookie", String.format(
+                "accessToken=%s; Path=/; HttpOnly; SameSite=None",
+                loginResponse.getAccessToken()
+        ));
+        response.addHeader("Set-Cookie", String.format(
+                "refreshToken=%s; Path=/; HttpOnly; SameSite=None",
+                loginResponse.getRefreshToken()
+        ));
+        return loginResponse;
     }
 }

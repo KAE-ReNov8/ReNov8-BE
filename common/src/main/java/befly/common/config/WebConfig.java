@@ -14,7 +14,10 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new AuthInterceptor())
-                .addPathPatterns("/**"); // 이후에 로그인/회원가입/닉네임 중복 path 제거
+                .addPathPatterns("/**")
+                .excludePathPatterns(
+                        "/auth/oauth2"
+                ); // 이후에 로그인/회원가입/닉네임 중복 path 제거
     }
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {

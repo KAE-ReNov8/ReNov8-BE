@@ -7,5 +7,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SocialIdRequest {
-    String ouath2Id;
+    String oauth2Id;
 }

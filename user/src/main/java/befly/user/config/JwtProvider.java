@@ -24,11 +24,21 @@ public class JwtProvider {
          return getString(userId, refresh, refreshExpiration);
     }
 
+    public Long getUserIdFromRefreshToken(String refresh) {
+        return Long.parseLong(Jwts.parserBuilder()
+                .setSigningKey(refresh)
+                .build()
+                .parseClaimsJws(refresh)
+                .getBody()
+                .getSubject());
+    }
+
     private String getString(String userId, String period, Long refreshExpiration) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", userId);
         return Jwts.builder()
                 .setClaims(claims)
+                .setSubject(userId)
                 .signWith(io.jsonwebtoken.SignatureAlgorithm.HS256, period)
                 .setExpiration(java.util.Date.from(java.time.Instant.now().plusSeconds(refreshExpiration)))
                 .compact();

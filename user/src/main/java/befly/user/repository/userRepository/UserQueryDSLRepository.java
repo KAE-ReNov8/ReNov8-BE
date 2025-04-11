@@ -1,4 +1,4 @@
-package befly.user.repository.UserRepository;
+package befly.user.repository.userRepository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

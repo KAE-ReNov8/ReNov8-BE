@@ -1,4 +1,4 @@
-package befly.user.repository.UserRepository;
+package befly.user.repository.userRepository;
 
 import befly.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
