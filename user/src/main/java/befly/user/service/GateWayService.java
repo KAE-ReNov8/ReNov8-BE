@@ -2,7 +2,7 @@ package befly.user.service;
 
 import befly.user.config.JwtProvider;
 import befly.user.dto.LoginResponse;
-import befly.user.repository.UserRepository.UserRepository;
+import befly.user.repository.userRepository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class GateWayService {
     }
 
 
-    public LoginResponse generateLoginResponse(long userId) {
+    public LoginResponse generateLoginResponse(Long userId) {
         if (isUserExists(userId)) {
             return createTokenResponse(userId);
         } else {

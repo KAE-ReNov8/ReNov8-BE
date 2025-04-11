@@ -4,7 +4,7 @@ import befly.common.code.status.GlobalErrorStatus;
 import befly.common.exception.RestApiException;
 import befly.user.domain.User;
 import befly.user.dto.SignInRequest;
-import befly.user.repository.UserRepository.UserRepository;
+import befly.user.repository.userRepository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

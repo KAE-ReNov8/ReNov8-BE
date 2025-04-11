@@ -14,7 +14,7 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String userId = request.getHeader("X-USER-ID");
-        request.setAttribute("userId", userId); // ArgumentResolver에서 꺼내 쓸 수 있게 저장
+        request.setAttribute("userId", Long.parseLong(userId)); // ArgumentResolver에서 꺼내 쓸 수 있게 저장
         return true;
     }
 }

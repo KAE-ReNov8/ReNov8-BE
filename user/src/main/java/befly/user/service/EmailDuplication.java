@@ -2,7 +2,7 @@ package befly.user.service;
 
 import befly.common.code.status.GlobalErrorStatus;
 import befly.common.exception.RestApiException;
-import befly.user.repository.UserRepository.UserRepository;
+import befly.user.repository.userRepository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
